@@ -3,7 +3,8 @@
 	email = Jonas.Hauser@swisscom.com
 [core]
 	editor = vim
-	
+[github]
+	user = seinol
 [push]
 	default = matching
 	
