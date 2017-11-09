@@ -4,6 +4,9 @@
 [core]
 	editor = vim
 	
+[push]
+	default = matching
+	
 [color "branch"]
 	current = yellow bold
 	local = green bold
