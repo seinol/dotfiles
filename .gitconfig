@@ -1,8 +1,10 @@
 [user]
-	name = Jonas Hauser
-	email = Jonas.Hauser@swisscom.com
+	name = Jonas
+	email = jonas.hauser@swisscom.com
 [core]
 	editor = vim
+	safecrlf = false
+	ignorecase = false
 [github]
 	user = seinol
 [push]
@@ -205,3 +207,9 @@
 	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 master' -
 	human = name-rev --name-only --refs=refs/heads/*
+[http]
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
