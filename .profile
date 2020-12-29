@@ -12,4 +12,4 @@ alias ...="cd ../.."
 username=`id -u -n`
 
 #curretly custom used
-alias stop='check && docker stop $(docker ps -a -q)'
+alias stop='docker stop $(docker ps -a -q)'

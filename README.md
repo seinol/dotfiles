@@ -1,2 +1,2 @@
 # dotfiles
-all my .xxx files
+All my .xxx files
