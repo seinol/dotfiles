@@ -3,7 +3,7 @@
 	email = info@jhauser.ch
 
 [core]
-	editor = 'C:/Program Files (x86)/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
+	editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	safecrlf = false
 	ignorecase = false
 [github]

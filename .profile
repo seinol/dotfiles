@@ -12,4 +12,7 @@ alias ...="cd ../.."
 username=`id -u -n`
 
 #curretly custom used
-alias stop='docker stop $(docker ps -a -q)'
+alias stop='echo -e "\nStop containers" && docker stop $(docker ps -a -q)'
+alias delcon='echo -e "\nDelete containers"  && docker rm -f $(docker ps -a -q)'
+alias delimg='echo -e "\nDelete images"  && docker rmi -f $(docker images -a -q)'
+alias resetall='stop && delcon && delimg'
