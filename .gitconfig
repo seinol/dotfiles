@@ -1,7 +1,6 @@
 [user]
 	name = Jonas Hauser
 	email = info@jhauser.ch
-
 [core]
 	editor = 'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin
 	safecrlf = false
@@ -63,6 +62,7 @@
 	cpc = cherry-pick --continue
 	#############
 	d = diff
+	dh = diff HEAD
 	dp = diff --patience
 	dc = diff --cached
 	dk = diff --check
@@ -93,6 +93,7 @@
 	#############
 	o = checkout
 	ob = checkout -b
+	co = checkout
 	#############
 	pr = prune -v
 	#############
@@ -195,23 +196,16 @@
 	unassumeall = !git assumed | xargs git unassume
 	assumeall = !git status -s | awk {'print $2'} | xargs git assume
 	#############
-	bump = !sh -c 'git commit -am \"Version bump v$1\" && git psuoc && git release $1' -
-	release = !sh -c 'git tag v$1 && git pst' -
-	unrelease = !sh -c 'git tag -d v$1 && git pso :v$1' -
+	bump = !sh -c 'git commit -am \"chore(release): bump to version $1\"' -
+	#release = !sh -c 'git tag $1 && git pst' -
+	#unrelease = !sh -c 'git tag -d $1 && git pso :$1' -
 	aliases = !git config -l | grep alias | cut -c 7-
 	snap = !git stash save 'snapshot: $(date)' && git stash apply 'stash@{0}'
 	bare = !sh -c 'git symbolic-ref HEAD refs/heads/$1 && git rm --cached -r . && git clean -xfd' -
 	whois = !sh -c 'git log -i -1 --author=\"$1\" --pretty=\"format:%an <%ae>\"' -
-	serve = daemon --reuseaddr --verbose --base-path=. --export-all ./.git
 	#############
-	ours = "!f() { git checkout --ours $@ && git add $@; }; f"
-	theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+	#ours = "!f() { git checkout --ours $@ && git add $@; }; f"
+	#theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
 	subrepo = !sh -c 'git filter-branch --prune-empty --subdirectory-filter $1 master' -
 	human = name-rev --name-only --refs=refs/heads/*
-[http]
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
 
