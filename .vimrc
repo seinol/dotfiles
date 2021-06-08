@@ -8,20 +8,23 @@ set number
 " disable vim welcome message
 set shortmess=I
 
-"always show editing mode
+" always show editing mode
 set showmode
 
 " optimize searches
 set hlsearch
-set incsearch                  
+set incsearch      
 
-"Always show current position
+" blink cursor on error instead of beeping
+set visualbell
+
+" always show current position
 set ruler
 
-" Height of the command bar
+" height of the command bar
 set cmdheight=2
 
-" Enable syntax highlighting
+" enable syntax highlighting
 syntax enable 
 
 " try to set new color scheme
