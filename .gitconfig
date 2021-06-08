@@ -9,6 +9,8 @@
 	user = seinol
 [push]
 	default = matching
+[init]
+	defaultBranch = master
 	
 [color "branch"]
 	current = yellow bold
