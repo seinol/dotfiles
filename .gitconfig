@@ -9,6 +9,7 @@
 	user = seinol
 [push]
 	default = matching
+	followTags = true
 [init]
 	defaultBranch = master
 	
