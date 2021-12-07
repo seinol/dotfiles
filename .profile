@@ -35,3 +35,7 @@ bind_adminer() {
 }
 alias adminer="bind_adminer"
 
+#python winpty
+alias python3='winpty python3.exe'
+alias python='winpty python.exe'
+alias pip='winpty pip.exe'
