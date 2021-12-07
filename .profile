@@ -1,5 +1,5 @@
 #simple ps1
-export PS1='\[\033[33m\]\u \W\[\033[00m\]\[\033[36m\]`__git_ps1`\[\033[00m\]\n$ '
+export PS1='\n\[\033[33m\]\u \W\[\033[00m\]\[\033[36m\]`__git_ps1`\[\033[00m\]\n$ '
 
 #list
 alias ll="ls -la"
