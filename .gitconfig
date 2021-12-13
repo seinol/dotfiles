@@ -77,10 +77,6 @@
 	fo = fetch origin
 	fu = fetch upstream
 	#############
-	fp = format-patch
-	#############
-	fk = fsck
-	#############
 	g = grep -p
 	#############
 	l = log --oneline
@@ -151,22 +147,6 @@
 	rehh = reset --hard HEAD
 	remh = reset --mixed HEAD
 	resh = reset --soft HEAD
-	#############
-	r = remote
-	ra = remote add
-	rr = remote rm
-	rv = remote -v
-	rn = remote rename
-	rp = remote prune
-	rs = remote show
-	rao = remote add origin
-	rau = remote add upstream
-	rro = remote remove origin
-	rru = remote remove upstream
-	rso = remote show origin
-	rsu = remote show upstream
-	rpo = remote prune origin
-	rpu = remote prune upstream
 	#############
 	rmf = rm -f
 	rmrf = rm -rf
