@@ -47,6 +47,6 @@ alias golint='echo -e "\nRunning go linter" && golangci-lint run'
 alias gotest='echo -e "\nRunning go test" && godotenv -f ./.env go test ./...'
 alias gotestcover='echo -e "\nRunning go test with cover" && godotenv -f ./.env-local go test ./... -coverprofile=coverage.out && go tool cover -html=coverage.out'
 alias goswag='echo -e "\nRunning go swagger regeneration" && swag init -g cmd/main.go -o api/docs --generatedTime'
-alias goswagfmt='echo -e "\nRunning go swagger format" && swag fmt -g cmd/main.go"
-alias goall="goclean && golint && gotest'
+alias goswagfmt='echo -e "\nRunning go swagger format" && swag fmt -g cmd/main.go'
+alias goall='goclean && golint && gotest'
 alias godocker='docker-compose up -d --build'
