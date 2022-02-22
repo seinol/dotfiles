@@ -1,0 +1,11 @@
+Host github.com
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/github_id_ed25519
+
+Host OST_HOST
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/ost_id_ed25519
+  
+Host SC_HOST
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/sc_id_ed25519
