@@ -37,5 +37,5 @@ set background=dark
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
 
-" 1 tab -> 4 spaces
-set tabstop=4
+" 1 tab -> 2 spaces
+set tabstop=2
