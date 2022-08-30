@@ -21,18 +21,18 @@ wsl_distro="Ubuntu"
 is_wsl() {
 	uname -a | grep "Linux" >> /dev/null
 	if [ $? -eq 0 ]; then
-    	echo Linux detected
+    echo Linux detected
 		return 1
 	else
-    	echo No Linux detected
-		return 0
+    echo No Linux detected
+		return 2
 	fi
 }
 
 #docker
 [[ is_wsl -eq 1 ]] && export DOCKER_HOST=tcp://localhost:2376
-[[ is_wsl -eq 1 ]] && alias docker='sudo docker'
-[[ is_wsl -eq 0 ]] && alias docker="wsl -d $wsl_distro -u root docker"
+[[ is_wsl -eq 2 ]] && alias docker="wsl -d $wsl_distro -u root docker"
+[[ is_wsl -eq 2 ]] && alias startdocker='wsl -d $wsl_distro -u root sudo service docker start'
 alias docker-compose='echo -e "Info: Using compose v2\n" && docker compose'
 alias stop='echo -e "\nStop docker containers" && docker stop $(docker ps -a -q)'
 alias delcon='echo -e "\nDelete docker containers"  && docker rm -f $(docker ps -a -q)'
@@ -41,19 +41,17 @@ alias delvol='echo -e "\nDelete docker volumes"  && docker volume rm -f $(docker
 alias resetall='stop && delcon && delimg && delvol'
 
 #notepad++
-if [[ is_wsl -eq 0 ]]; then
-	alias npp="'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-else
-	alias npp="'/mnt/c/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-fi
+[[ is_wsl -eq 1 ]] && alias npp="'/mnt/c/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+[[ is_wsl -eq 2 ]] && alias npp="'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
 
 #start and bind adminer to running container
+# TODO add all dev containers to default docker network
 bind_adminer() {
-    local first_arg="$1"
-    local second_arg="$2"
-    shift 2     
-	docker rm -f adminer
-    docker run -d --link "$@":db -p 8090:8080 --name=adminer adminer;
+  docker rm -f adminer >> /dev/null
+  echo -e "\nBind to: \t$1"
+  echo -e "Network: \t$2\n"
+  $test = [[ is_wsl -eq 1 ]] && '--net "$2"'
+  docker run -d --link "$1":db -p 8090:8080  --name=adminer adminer;
 }
 alias adminer="bind_adminer"
 
@@ -70,4 +68,12 @@ alias gocheck='goclean && gobuild && golint && gotest'
 alias godocker='docker-compose up -d --build && echo -e "\n" && docker ps -a'
 
 #cloud foundry
-[[ is_wsl -eq 1 ]] && alias cf='echo -e "Info: Using cf cli v8\n" && cf8'
+alias prod="cf target -o GHR-OSA_apps_C4 -s prod"
+alias dev="cf target -o GHR-OSA_apps_C4 -s dev"
+alias playground="cf target -o GHR-OSA_apps_C4 -s playground"
+alias test="cf target -o GHR-OSA_apps_C4 -s playground"
+alias other="cf target -o GHR-OSA_apps_C4 -s other"
+alias login="cf login -a https://api.scapp-console.swisscom.com --sso"
+alias logindev="cf login -a https://api.dev-scapp-console.swisscom.com --sso"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
