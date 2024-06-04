@@ -41,8 +41,7 @@ alias delvol='echo -e "\nDelete docker volumes"  && docker volume rm -f $(docker
 alias resetall='stop && delcon && delimg && delvol'
 
 #notepad++
-[[ is_wsl -eq 1 ]] && alias npp="'/mnt/c/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
-[[ is_wsl -eq 2 ]] && alias npp="'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
+alias npp="'C:/Program Files/Notepad++/notepad++.exe' -multiInst -notabbar -nosession -noPlugin"
 
 #start and bind adminer to running container
 # TODO add all dev containers to default docker network
@@ -67,13 +66,5 @@ alias goswagfmt='echo -e "\nRunning go swagger format" && swag fmt -g cmd/main.g
 alias gocheck='goclean && gobuild && golint && gotest'
 alias godocker='docker-compose up -d --build && echo -e "\n" && docker ps -a'
 
-#cloud foundry
-alias prod="cf target -o GHR-OSA_apps_C4 -s prod"
-alias dev="cf target -o GHR-OSA_apps_C4 -s dev"
-alias playground="cf target -o GHR-OSA_apps_C4 -s playground"
-alias test="cf target -o GHR-OSA_apps_C4 -s playground"
-alias other="cf target -o GHR-OSA_apps_C4 -s other"
-alias login="cf login -a https://api.scapp-console.swisscom.com --sso"
-alias logindev="cf login -a https://api.dev-scapp-console.swisscom.com --sso"
-
+#yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
