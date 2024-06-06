@@ -69,12 +69,7 @@ alias godocker='docker-compose up -d --build && echo -e "\n" && docker ps -a'
 #yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+#nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-source <(kubectl completion bash)
-complete -F __start_kubectl k
-export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-source <(kubectl completion bash)
-complete -F __start_kubectl k
