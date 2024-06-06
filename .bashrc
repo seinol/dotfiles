@@ -30,9 +30,9 @@ is_wsl() {
 }
 
 #docker
-[[ is_wsl -eq 1 ]] && export DOCKER_HOST=tcp://localhost:2376
-[[ is_wsl -eq 2 ]] && alias docker="wsl -d $wsl_distro -u root docker"
-[[ is_wsl -eq 2 ]] && alias startdocker='wsl -d $wsl_distro -u root sudo service docker start'
+#[[ is_wsl -eq 1 ]] && export DOCKER_HOST=tcp://localhost:2376
+#[[ is_wsl -eq 2 ]] && alias docker="wsl -d $wsl_distro -u root docker"
+#[[ is_wsl -eq 2 ]] && alias startdocker='wsl -d $wsl_distro -u root sudo service docker start'
 alias docker-compose='echo -e "Info: Using compose v2\n" && docker compose'
 alias stop='echo -e "\nStop docker containers" && docker stop $(docker ps -a -q)'
 alias delcon='echo -e "\nDelete docker containers"  && docker rm -f $(docker ps -a -q)'
@@ -68,3 +68,13 @@ alias godocker='docker-compose up -d --build && echo -e "\n" && docker ps -a'
 
 #yarn
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+source <(kubectl completion bash)
+complete -F __start_kubectl k
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+source <(kubectl completion bash)
+complete -F __start_kubectl k
